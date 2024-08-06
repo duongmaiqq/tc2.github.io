@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lời Chúc và Mã QR</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f8f8f8;
+            text-align: center;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+        }
+        .qr-code {
+            margin: 20px 0;
+        }
+        .button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+        }
+        .button:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cảm ơn bạn!</h1>
+        <p>Chúng tôi rất tiếc khi không có bạn ở bữa tiệc. Bạn có thể gửi lời chúc và quà mừng qua mã QR dưới đây:</p>
+        
+        <!-- Thay thế URL mã QR với URL thực tế -->
+        <div class="qr-code">
+            <img src="qr-code.png" alt="Mã QR để chuyển tiền mừng" width="200">
+        </div>
+        
+        <a href="mailto:brideandgroom@example.com" class="button">Gửi Lời Chúc</a>
+    </div>
+</body>
+</html>
