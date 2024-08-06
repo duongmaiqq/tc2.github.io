@@ -13,14 +13,17 @@
             height: 100vh;
             margin: 0;
             background-color: #f8f8f8;
+            overflow: hidden; /* Ẩn thanh cuộn để hiệu ứng không bị cắt */
         }
         .invitation {
+            position: relative; /* Để có thể đặt tsParticles lên trên */
             background-color: #fff;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             width: 500px;
             text-align: center;
             padding: 20px;
+            z-index: 1; /* Đảm bảo nội dung nằm trên hiệu ứng */
         }
         .invitation img {
             width: 100%;
@@ -56,13 +59,20 @@
         .button:hover {
             opacity: 0.8;
         }
+        #tsparticles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0; /* Đặt hiệu ứng ở dưới cùng */
+        }
     </style>
-     <!-- Thêm Fireworks.js từ CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fireworks-js/2.0.1/fireworks.min.js"></script>
-
-
+    <!-- Thêm tsParticles từ CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.0.0/dist/tsparticles.bundle.min.js"></script>
 </head>
 <body>
+    <div id="tsparticles"></div> <!-- Vùng hiển thị hiệu ứng cánh hoa -->
     <div class="invitation">
         <!-- Thay thế URL của ảnh bằng tên tệp ảnh trên máy tính -->
         <img src="TC.png" alt="Happy Wedding">
@@ -74,25 +84,87 @@
     </div>
 
     <script>
-        // Khởi tạo hiệu ứng bắn pháo hoa
-        const container = document.querySelector('.invitation');
-        const fireworks = new Fireworks(container, {
-            speed: 2,
-            acceleration: 1.02,
-            friction: 0.97,
-            gravity: 1,
-            particles: 100,
-            hue: { min: 0, max: 360 },
-            opacity: { min: 0.2, max: 0.9 },
-            trailLength: { min: 3, max: 7 },
+        // Khởi tạo hiệu ứng cánh hoa hồng rơi với tsParticles
+        tsParticles.load("tsparticles", {
+            particles: {
+                number: {
+                    value: 100,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                shape: {
+                    type: "image",
+                    image: {
+                        src: "https://your-cdn-path/rose-petal.png", // Đổi link ảnh cánh hoa hồng
+                        width: 100,
+                        height: 100
+                    }
+                },
+                size: {
+                    value: 10,
+                    random: true,
+                    anim: {
+                        speed: 5,
+                        size_min: 0.1
+                    }
+                },
+                opacity: {
+                    value: 0.5,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 1,
+                        opacity_min: 0.1
+                    }
+                },
+                move: {
+                    enable: true,
+                    speed: 1,
+                    direction: "bottom",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false,
+                    attract: {
+                        enable: false,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            interactivity: {
+                events: {
+                    onhover: {
+                        enable: false,
+                        mode: "repulse"
+                    },
+                    onclick: {
+                        enable: false,
+                        mode: "push"
+                    },
+                    resize: true
+                },
+                modes: {
+                    bubble: {
+                        distance: 400,
+                        duration: 2,
+                        opacity: 0.8,
+                        size: 40
+                    },
+                    repulse: {
+                        distance: 200,
+                        duration: 0.4
+                    }
+                }
+            },
+            retina_detect: true
         });
 
         function confirmAttendance() {
-            fireworks.start(); // Bắt đầu hiệu ứng bắn pháo hoa
-            setTimeout(() => {
-                alert('Cảm ơn bạn đã xác nhận tham dự!');
-                fireworks.stop(); // Dừng hiệu ứng sau khi thông báo
-            }, 3000); // Hiệu ứng kéo dài 3 giây
+            // Hiệu ứng cánh hoa hồng rơi sẽ tự động chạy, không cần gọi lại ở đây
+            alert('Cảm ơn bạn đã xác nhận tham dự!');
         }
         function declineAttendance() {
             window.location.href = 'thank_you.html'; // Chuyển hướng đến trang lời chúc và mã QR
