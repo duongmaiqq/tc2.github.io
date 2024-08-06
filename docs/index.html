@@ -50,7 +50,7 @@
 </head>
 <body>
     <div class="invitation">
-        <!-- Thay thế URL của ảnh bằng URL thực tế của bạn -->
+        <!-- Thay thế URL của ảnh bằng tên tệp ảnh trên máy tính -->
         <img src="TC.png" alt="Happy Wedding">
         
         <div class="button-container">
@@ -66,8 +66,7 @@
         }
 
         function declineAttendance() {
-            alert('Chúng tôi tiếc rằng bạn không thể tham dự.');
-            // Có thể thêm mã để gửi thông tin phản hồi đến email hoặc server ở đây
+            window.location.href = 'thank_you.html'; // Chuyển hướng đến trang lời chúc và mã QR
         }
     </script>
 </body>
