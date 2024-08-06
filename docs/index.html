@@ -57,6 +57,8 @@
             opacity: 0.8;
         }
     </style>
+     <!-- Thêm Fireworks.js từ CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.0.1/dist/fireworks.min.js"></script>
 </head>
 <body>
     <div class="invitation">
@@ -70,11 +72,24 @@
     </div>
 
     <script>
-        function confirmAttendance() {
-            alert('Cảm ơn bạn đã xác nhận tham dự!');
-            // Có thể thêm mã để gửi thông tin phản hồi đến email hoặc server ở đây
+        // Khởi tạo hiệu ứng bắn pháo hoa
+        const container = document.querySelector('.invitation');
+        const fireworks = new Fireworks(container, {
+            speed: 2,
+            acceleration: 1.02,
+            friction: 0.97,
+            gravity: 1,
+            particles: 100,
+            hue: { min: 0, max: 360 },
+            opacity: { min: 0.2, max: 0.9 },
+            trailLength: { min: 3, max: 7 },
+        });
+         fireworks.start(); // Bắt đầu hiệu ứng bắn pháo hoa
+            setTimeout(() => {
+                alert('Cảm ơn bạn đã xác nhận tham dự!');
+                fireworks.stop(); // Dừng hiệu ứng sau khi thông báo
+            }, 3000); // Hiệu ứng kéo dài 3 giây
         }
-
         function declineAttendance() {
             window.location.href = 'thank_you.html'; // Chuyển hướng đến trang lời chúc và mã QR
         }
