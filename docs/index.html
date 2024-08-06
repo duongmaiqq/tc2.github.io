@@ -84,7 +84,8 @@
             opacity: { min: 0.2, max: 0.9 },
             trailLength: { min: 3, max: 7 },
         });
-         fireworks.start(); // Bắt đầu hiệu ứng bắn pháo hoa
+        function confirmAttendance() {
+            fireworks.start(); // Bắt đầu hiệu ứng bắn pháo hoa
             setTimeout(() => {
                 alert('Cảm ơn bạn đã xác nhận tham dự!');
                 fireworks.stop(); // Dừng hiệu ứng sau khi thông báo
