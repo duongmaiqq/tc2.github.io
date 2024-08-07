@@ -7,18 +7,23 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
             background-color: #f8f8f8;
-            overflow: auto; /* Cho phép cuộn trang */
+            overflow: hidden; /* Ẩn thanh cuộn để hiệu ứng không bị cắt */
         }
         .invitation {
+            position: relative; /* Để có thể đặt tsParticles lên trên */
             background-color: #fff;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             width: 500px;
-            margin: 20px auto; /* Căn giữa và có khoảng cách trên/dưới */
             text-align: center;
             padding: 20px;
+            z-index: 1; /* Đảm bảo nội dung nằm trên hiệu ứng */
         }
         .invitation img {
             width: 100%;
@@ -158,9 +163,9 @@
         });
 
         function confirmAttendance() {
-            window.location.href = 'directions.html'; // Chuyển hướng đến trang chỉ dẫn
+            // Hiệu ứng cánh hoa hồng rơi sẽ tự động chạy, không cần gọi lại ở đây
+            alert('Cảm ơn bạn đã xác nhận tham dự!');
         }
-
         function declineAttendance() {
             window.location.href = 'thank_you.html'; // Chuyển hướng đến trang lời chúc và mã QR
         }
