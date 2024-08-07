@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chỉ Dẫn Đến Địa Điểm</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: row;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .map-container {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .map-container h2 {
+            text-align: center;
+        }
+        .maps {
+            height: 50%;
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+        .instructions {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="instructions">
+        <h2>Chỉ Dẫn Đến Nhà Chú Rể</h2>
+        <p>Địa chỉ: [Địa chỉ của nhà chú rể]</p>
+        <p>Hãy làm theo chỉ dẫn trên bản đồ bên trái để đến nhà chú rể.</p>
+        <h2>Chỉ Dẫn Đến Nhà Cô Dâu</h2>
+        <p>Địa chỉ: [Địa chỉ của nhà cô dâu]</p>
+        <p>Hãy làm theo chỉ dẫn trên bản đồ bên phải để đến nhà cô dâu.</p>
+    </div>
+    <div class="map-container">
+        <h2>Bản Đồ Nhà Chú Rể</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d... [Link nhúng bản đồ nhà chú rể]" class="maps" allowfullscreen="" loading="lazy"></iframe>
+        <h2>Bản Đồ Nhà Cô Dâu</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d... [Link nhúng bản đồ nhà cô dâu]" class="maps" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+</body>
+</html>
