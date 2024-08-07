@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thiệp Mời Cưới</title>
+    <title>Happy Wedding</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -21,6 +21,7 @@
             width: 500px;
             text-align: center;
             padding: 20px;
+            position: relative; /* Đảm bảo hiệu ứng bắn pháo hoa được đặt trên lớp */
         }
         .invitation img {
             width: 100%;
@@ -57,11 +58,13 @@
             opacity: 0.8;
         }
     </style>
+    <!-- Thêm Fireworks.js từ CDN -->
+    <script src="https://unpkg.com/fireworks-js@2.0.1/dist/fireworks.min.js"></script>
 </head>
 <body>
     <div class="invitation">
         <!-- Thay thế URL của ảnh bằng tên tệp ảnh trên máy tính -->
-        <img src="wedding-invitation.jpg" alt="Thiệp mời cưới">
+        <img src="TC.png" alt="Happy Wedding">
         
         <div class="button-container">
             <button class="button confirm" onclick="confirmAttendance()">Tham dự</button>
@@ -70,14 +73,32 @@
     </div>
 
     <script>
-        function confirmAttendance() {
-            alert('Cảm ơn bạn đã xác nhận tham dự!');
-            // Có thể thêm mã để gửi thông tin phản hồi đến email hoặc server ở đây
-        }
+        document.addEventListener('DOMContentLoaded', () => {
+            // Khởi tạo hiệu ứng bắn pháo hoa
+            const container = document.querySelector('.invitation');
+            const fireworks = new Fireworks(container, {
+                speed: 2,
+                acceleration: 1.02,
+                friction: 0.97,
+                gravity: 1,
+                particles: 100,
+                hue: { min: 0, max: 360 },
+                opacity: { min: 0.2, max: 0.9 },
+                trailLength: { min: 3, max: 7 },
+            });
 
-        function declineAttendance() {
-            window.location.href = 'thank_you.html'; // Chuyển hướng đến trang lời chúc và mã QR
-        }
+            window.confirmAttendance = function() {
+                fireworks.start(); // Bắt đầu hiệu ứng bắn pháo hoa
+                setTimeout(() => {
+                    alert('Cảm ơn bạn đã xác nhận tham dự!');
+                    fireworks.stop(); // Dừng hiệu ứng sau khi thông báo
+                }, 3000); // Hiệu ứng kéo dài 3 giây
+            };
+
+            window.declineAttendance = function() {
+                window.location.href = 'thank_you.html'; // Chuyển hướng đến trang lời chúc và mã QR
+            };
+        });
     </script>
 </body>
 </html>
