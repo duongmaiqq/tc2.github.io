@@ -5,76 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Wedding</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f8f8f8;
-        }
-        .invitation {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            width: 500px;
-            text-align: center;
-            padding: 20px;
-            position: relative; /* Đảm bảo hiệu ứng bắn pháo hoa được đặt trên lớp */
-        }
-        .invitation img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-        .button-container {
-            margin: 20px 0;
-        }
-        .button {
-            border: 2px solid; /* Thêm viền cho nút */
-            color: white;
-            border-radius: 5px;
-            padding: 10px 20px;
-            cursor: pointer;
-            margin: 5px;
-            font-size: 16px;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            font-weight: bold;
-            background-color: transparent; /* Nền trong suốt để màu nền viền dễ thấy hơn */
-        }
-        .button.confirm {
-            border-color: #006064; /* Màu viền cho nút Tham dự */
-            color: #006064; /* Màu chữ cho nút Tham dự */
-            background-color: #e0f7fa; /* Màu nền pastel nhạt hơn */
-        }
-        .button.decline {
-            border-color: #c2185b; /* Màu viền cho nút Không tham dự */
-            color: #c2185b; /* Màu chữ cho nút Không tham dự */
-            background-color: #fce4ec; /* Màu nền pastel nhạt hơn */
-        }
-        .button:hover {
-            opacity: 0.8;
-        }
+        /* CSS không thay đổi */
     </style>
-    <!-- Thêm Fireworks.js từ CDN -->
     <script src="https://unpkg.com/fireworks-js@2.0.1/dist/fireworks.min.js"></script>
 </head>
 <body>
     <div class="invitation">
-        <!-- Thay thế URL của ảnh bằng tên tệp ảnh trên máy tính -->
         <img src="TC.png" alt="Happy Wedding">
-        
         <div class="button-container">
-            <button class="button confirm" onclick="confirmAttendance()">Tham dự</button>
-            <button class="button decline" onclick="declineAttendance()">Không tham dự</button>
+            <button class="button confirm">Tham dự</button>
+            <button class="button decline">Không tham dự</button>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Khởi tạo hiệu ứng bắn pháo hoa
             const container = document.querySelector('.invitation');
             const fireworks = new Fireworks(container, {
                 speed: 2,
@@ -87,17 +32,17 @@
                 trailLength: { min: 3, max: 7 },
             });
 
-            window.confirmAttendance = function() {
-                fireworks.start(); // Bắt đầu hiệu ứng bắn pháo hoa
+            document.querySelector('.button.confirm').addEventListener('click', () => {
+                fireworks.start();
                 setTimeout(() => {
                     alert('Cảm ơn bạn đã xác nhận tham dự!');
-                    fireworks.stop(); // Dừng hiệu ứng sau khi thông báo
-                }, 3000); // Hiệu ứng kéo dài 3 giây
-            };
+                    fireworks.stop();
+                }, 3000);
+            });
 
-            window.declineAttendance = function() {
-                window.location.href = 'thank_you.html'; // Chuyển hướng đến trang lời chúc và mã QR
-            };
+            document.querySelector('.button.decline').addEventListener('click', () => {
+                window.location.href = 'thank_you.html';
+            });
         });
     </script>
 </body>
